@@ -39,4 +39,12 @@
   >
   > Com $i_{k}^{m}$ sendo os indices dos $K$ vizinhos próximos e $w_{mk}$ pesos não negativos e o número de features $N$ escolhido até a convergência para o erro fixado
 
-
+#### Low-Dimensional Representations (Autoencoder): Transformação do espaço de $M$ snapshots para um espaço reduzido de dimensão $N$
+- **Encoder $G(\mathbf{u}^{m})$**: $`\mathbf{u}^{m} \mapsto \mathbf{a}^{m} := G(\mathbf{u}^{m})`$
+- **Decoder $H(\mathbf{a}^{m})$**: $`\mathbf{a}^{m} \mapsto \mathbf{u}^{m} := H(\mathbf{a}^{m})`$
+- $G$ e $H$ são escolhidos de forma a minimizar o quadrado do erro acumulado entre a aproximação e os snapshots (in-sample):
+  > $`\displaystyle E_{in} = \frac{1}{M} \sum^{M}_{m=1} \lVert  \mathbf{\hat{u}}^m - \mathbf{u}^m \rVert_{\Omega}^2`$
+- **Autoencoder 1 - Proper Orthogonal Decomposition (POD)**: POD é Um Autoencoder linear otimizado para encontrar subespaços otimizados
+  - **POD Encoder $G$**: $`G(\mathbf{u}_{i}) = \mathbf{a}_{i} = (\mathbf{u} - \mathbf{u}_{0}, \mathbf{u}_i)_{\Omega}`$ ❓ (Não entendi o $u$ sem indice)
+  - **POD Decoder $H$**: $`\displaystyle  \mathbf{\hat{u}}(\mathbf{x}) = \mathbf{u}_0(\mathbf{x}) + \sum^{M}_{i=1} \mathbf{a}_{i}\mathbf{u}_{i}(\mathbf{x})`$
+- **Autoencoder 2 - K-Means**:
